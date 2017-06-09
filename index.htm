@@ -1,3 +1,11 @@
+<p>Git sistema distribuído de controle de versão que cria um repositório sobre um diretório do sistema operacional.<br>
+</p>
+<ul>
+ <li>Instalar o Git no Windows</li>
+ <li>Abrir o prompt do Git (ctrl + ' chama o terminal no VS-Code)</li>
+ <li>Acessar a pasta desejada via prompt e executar os comandos acima.</li>
+ </ul>
+Fluxo básico de comandos
 <pre>
 git init  (( <a href="https://git-scm.com/book/pt-br/v1/Git-Essencial-Obtendo-um-Reposit%C3%B3rio-Git">Git-Obtendo-um-Repositório</a> | cria um novo subdiretório chamado .git ))
 git add *.html  (( agrupa os arquivos p o commit ))
@@ -5,22 +13,55 @@ git commit -m "first commit"  (( primeiro commit ))
 git remote add origin git@github.com:dj79/git-windows.git  (( se conecta a origin para iniciar de arquivos ))
 git push -u origin master  (( envia e atualiza o servidor com os código-fonte ))</pre>
 
-<ul>
- <li>Instalar o Git no Windows</li>
- <li>Abrir o prompt do Git (ctrl + ' chama o terminal no VS-Code)</li>
- <li>Acessar a pasta desejada p/ via prompt e excutar os camandos acima</li>
- </ul>
 
+<p>Outros comandos</p>
  <pre>
   git status  (( verifica o branch master, listando Untracked files e Changes to be committed ))
   git add f1.htm f2.css f3.js  (( <a href='https://stackoverflow.com/questions/19576116/how-to-add-multiple-files-in-git-at-the-same-time#answer-23621748'>add-multiple-files</a> ))
   git commit -m 'mensagem de lembranca do commit' (( somente p/ Changes to be committed))
-  git rm f1.htm  (( remove do git e do diretório ))
+  git update-index --assume-unchanged index.htm  
+  git remove f1.htm  (( remove inclusive o arquivo do diretório ))  
   </pre>
 
-  <p>Instalar TortoiseGit, ferramenta Git Client, p/ organizar commando básicos e configurações.<br>
-  Clique botão direito no Explorer Windows, TortoiseGit, Settings.<br>
+<p>Git Client são ferramentas gráficas que organizam os principais comandos e configurações.</p>
+  <p>Uma opção é o TortoiseGit que abri com clique no botão direito no Windows Explorer.<br>
+  O Git tem 2 opções para começar: criar um repositório ou clonar um rep. existente.<br>
+  TortoiseGit Git tem a opção Create repository here... que executa o comando git init<br>
+  não marque Make It Bare e avance<br>
+  ok, Repositório criado, a pasta oculta .git é gerada com o arquivo config e outros arquivos.<br>
 
-
-
-
+  próximo passo é configurar a conexão com o servidor Git online, TortoiseGit/Settings/Git/Remote 
+  inserir o endereço (ex: https://github.com/dj79/git-windows.git) no campo URL e Add New/Save, next,next<br>
+  fazer o download (Get Latest Version) do branch online para um branch local específico para alteração e desenvolvimento,
+   inicialmente pelo branch master (remote) para um branch local.<br>
+  comando TortoiseGit/Pull</p>
+Arquivo config
+  <table><tr>
+    <td>Antes git init</td>
+    <td>Depois git clone</td>
+    </tr>
+    <tr>
+    <td><pre>[core]
+	bare = false
+	repositoryformatversion = 0
+	filemode = false
+	symlinks = false
+	ignorecase = true
+	logallrefupdates = true</pre></td>
+    <td><pre>[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	symlinks = false
+	ignorecase = true
+[remote "origin"]
+	url = https://github.com/dj79/git-windows.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master</pre></td>
+    </tr>
+  </table>
+  <p> Segunda opção clonar Repositório
+  

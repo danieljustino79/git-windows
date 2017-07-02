@@ -56,3 +56,43 @@ Após o Git estar devidamente configurado e o momento de manipular o projeto que
 ```
 git pull
 ```
+*git status* apresenta uma série de informações sobre o branch, nem todas visíveis inicialmente:
+verifica o estado do branch esta intacto ainda (up-to-date)
+lista de arquivos Untracked (não monitorados pelo Git ainda, ou seja unstage)  
+lista de arquivos Changes to be committed (situação staging que forão alterados)
+verifica se há diferença entre o branch e o origin/master, com quant. de commit a mais e sugestão de git push.
+```
+git status
+```
+
+*git add* inicia monitoramento sobre os arqs em situação untracked do projeto, os arquivos ficarão em situação staging
+```
+git add arq1.html arq2.css arq3.js
+git add *
+```
+
+*git reset HEAD* retorna os arquivos de staging para untracked
+```
+git reset HEAD arq2.css
+```
+
+*git checkout* descartar a alteração no arquivo (undo)
+```
+git checkout arq2.css
+```
+
+*git commit -m* organizar arquivos editados em situação staging e preencher um comentário, 
+este comando senão existe pendencias de pull e arquivos pendentes de commit
+```
+git commit -m 'primeiro commit'
+```	
+
+*git log* histórico de commits no branch
+```
+git log
+```
+
+*git push* envia os arquivo par ao repositório remoto
+```
+git log
+```
